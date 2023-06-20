@@ -1,0 +1,8 @@
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\bin\Debug\Lesson_7.exe.config
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\bin\Debug\Lesson_7.exe
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\bin\Debug\Lesson_7.pdb
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\obj\Debug\Lesson_7.csproj.AssemblyReference.cache
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\obj\Debug\Lesson_7.csproj.SuggestedBindingRedirects.cache
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\obj\Debug\Lesson_7.csproj.CoreCompileInputs.cache
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\obj\Debug\Lesson_7.exe
+C:\Users\Misha\source\repos\Lesson_7\Lesson_7\obj\Debug\Lesson_7.pdb
