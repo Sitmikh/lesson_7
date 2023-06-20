@@ -103,7 +103,7 @@ namespace Lesson7
                         break;
                     case "F":   // Помощь                                     
                     case "f":
-                        rep.Help();
+                        Help();
                         break;
                     case "0": // Выход
                         System.Environment.Exit(0);
@@ -112,7 +112,7 @@ namespace Lesson7
                 }
             }
 
-            public void Help()
+            void Help()
             {
                 Console.WriteLine("\tВведите:\r\n1 - Отображение списка;\r\n2 - Отобразить сотрудника;\r\n3 - Добавить сотрудника;\r\n4 - Удалить сотрудника;" +
                     "\r\n5 - Отобразить сотрудникв в определенном диапазоне дат;\r\nF - Помощь;\r\n0 - Выход.");
