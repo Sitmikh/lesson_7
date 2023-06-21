@@ -10,7 +10,7 @@ namespace Lesson_7
 {
     struct Worker
     {
-        #region Конструктор
+       
         /// <summary>
         /// Конструктор создания работника
         /// </summary>
@@ -21,16 +21,13 @@ namespace Lesson_7
         /// <param name="PlaceOfBirth">Место рождения работника</param>
         public Worker(string FIO, byte Age, uint Height, DateTime Burthday, string PlaceOfBirth)
         {
-                                                                                                                                 //id и datatime не указываются в конструкторе
             this.FIO = FIO;
             this.Age = Age;
             this.Height = Height;
             this.Burthday = Burthday;
             this.PlaceOfBirth = PlaceOfBirth;
         }
-        #endregion
-
-        #region Свойства (автосвойства)
+        
         /// <summary>
         /// ФИО работника
         /// </summary>
@@ -51,13 +48,10 @@ namespace Lesson_7
         /// Место рождения работника
         /// </summary>
         public string PlaceOfBirth { get; set; }
-        #endregion
-
-        #region Методы
+     
         public string Print()
         {
-            return "0";
+            return $"{this.FIO,15} {this.Age,15} {this.Height,15} {this.Burthday,15} {this.PlaceOfBirth,10}";
         }
-        #endregion
     }
 }

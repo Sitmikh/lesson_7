@@ -28,7 +28,7 @@ namespace Lesson_7
             return worker;
         }
 
-        public Worker GetWorkerById(int id) //можно объединить гетворкер и делит воркер (гетворкер+срока удалить)
+        public Worker GetWorkerById(int id) //можно объединить гетворкер и делит воркер (гетворкер+строка удалить)
         {
             Console.WriteLine("Введите id для отображения необходимого  сотрудника");
             return worker[id];
@@ -37,11 +37,6 @@ namespace Lesson_7
         public void AddWorker(Worker worker)
         {
             this.Resize(id >= this.worker.Length);
-            worker.FIO = Console.ReadLine();
-            worker.Age = byte.Parse(Console.ReadLine());
-            worker.Height = uint.Parse(Console.ReadLine()); 
-            worker.Burthday = DateTime.Parse(Console.ReadLine());
-            worker.PlaceOfBirth = Console.ReadLine();
             this.worker[id] = worker;
             id++; //зачем this
 
@@ -56,12 +51,16 @@ namespace Lesson_7
         {
             return new Worker[0];
         }
-
-        public void Writer() 
+        
+        /// <summary>
+        /// Сохранение информации о сотрудниках в файл
+        /// </summary>
+        public void WriteToFile() 
         {
             using (StreamWriter sw = new StreamWriter(path)) //зачем this
             {
-                sw.WriteLine(worker);
+                for (int i = 0; i < this.worker.Length; i++)
+                    sw.WriteLine(worker[i]);
             }
         }
 
@@ -69,32 +68,21 @@ namespace Lesson_7
     /// Загрузка информации о сотрудниках из файла
     /// </summary>
     /// <param name="path">путь к файлу с сотрудниками</param>
-        public void Reader()
+        public void ReadFromFile()
         {
             using (StreamReader sr = new StreamReader(path)) //зачем this
             {
-                titles = sr.ReadLine().Split('#');
+                //titles = sr.ReadLine().Split('#');
                 string line = sr.ReadToEnd();
-                string[] data = line.Split('#', '\r', '\n');
-                if (line != null)
-                {
-                    foreach (var word in line)
-                    {
-                        Console.Write(word);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Файл не создан/пустой. Заполните хотя бы одного сотрудника");
-                }
+                worker = line.Split('#', '\r', '\n'); //непанятна
             }
         }
 
-        /// <summary>
-        /// Информация о взаимодействии с интерфейсом
-        /// </summary>
        
-
+       /// <summary>
+       /// Увеличение массива сотрудников
+       /// </summary>
+       /// <param name="Flag">Если условие выполняется, то делаем</param>
         public void Resize(bool Flag)
         { 
         if (Flag)

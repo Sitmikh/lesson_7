@@ -11,65 +11,6 @@ namespace Lesson7
 {
     internal class Program
     {
-        //        /// <summary>
-        //        /// Метод для создания/заполнения файла
-        //        /// </summary>
-        //        /// <param name="id">первое число</param>
-        //        /// <returns></returns>
-        //        static uint Writer(uint id)
-        //        {
-        //            using (StreamWriter sw = new StreamWriter("Cотрудники.txt", true, Encoding.Unicode))
-        //            {
-        //                string line = String.Empty;
-
-        //                line += $"{id}#";
-
-        //                string dateTime = DateTime.Now.ToString();
-        //                line += $"{dateTime}#";
-
-        //                Console.Write("Введите ФИО: ");
-        //                line += $"{Console.ReadLine()}#";
-
-        //                Console.Write("Введите возраст: ");
-        //                line += $"{Console.ReadLine()}#";
-
-        //                Console.Write("Введите рост: ");
-        //                line += $"{Console.ReadLine()}#";
-
-        //                Console.Write("Введите дату рождения в формате ДД.ММ.ГГГГ: ");
-        //                line += $"{Console.ReadLine()}#";
-
-        //                Console.Write("Введите место рождения(город): ");
-        //                line += $"город {Console.ReadLine()}";
-
-        //                sw.WriteLine(line);
-
-        //                return id;
-        //            }
-        //        }
-        //        /// <summary>
-        //        /// Метод для считывания из файла
-        //        /// </summary>
-        //        static void Reader()
-        //        {
-        //            using (StreamReader sr = new StreamReader("Cотрудники.txt", Encoding.Unicode))
-        //            {
-        //                string line = sr.ReadToEnd();
-        //                string[] data = line.Split('#', '\r', '\n');
-        //                if (line != null)
-        //                {
-        //                    foreach (var word in line)
-        //                    {
-        //                        Console.Write(word);
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    Console.WriteLine("Файл не создан/пустой. Нажмите 2 для создания файла и внесения в нее первой записи");
-        //                }
-        //            }
-        //        }
-
         static void Main(string[] args)
         {
             string key;
@@ -78,7 +19,7 @@ namespace Lesson7
             Repository rep = new Repository(path);
 
             Help();
-            rep.Reader(); //можно создать 2 массива (1 с уже имеющимися, второй с добавленными). Вызывать их по мене необходимости (по сути для экономии памяти и возможности выйти без сохранения)
+            rep.ReadFromFile(); //можно создать 2 массива (1 с уже имеющимися, второй с добавленными). Вызывать их по мене необходимости (по сути для экономии памяти и возможности выйти без сохранения)
             
             while (true)
             {
@@ -93,13 +34,13 @@ namespace Lesson7
                         rep.GetWorkerById(int.Parse(Console.ReadLine()));
                         break;
                     case "3": // Добавить сотрудника
-                        rep.AddWorker();
+                        //rep.AddWorker();
                         break;
                     case "4": // Удалить сотрудника
                         rep.DeleteWorker(int.Parse(Console.ReadLine()));
                         break;
                     case "5": // Сотрудники в диапазоне дат
-                        rep.GetWorkersBetweenTwoDates();
+                       // rep.GetWorkersBetweenTwoDates();
                         break;
                     case "F":   // Помощь                                     
                     case "f":
@@ -107,11 +48,13 @@ namespace Lesson7
                         break;
                     case "0": // Выход
                         System.Environment.Exit(0);
-                        rep.Writer();
+                        rep.WriteToFile();
                         break;
                 }
             }
-
+            /// <summary>
+            /// Информация о взаимодействии с интерфейсом
+            /// </summary>
             void Help()
             {
                 Console.WriteLine("\tВведите:\r\n1 - Отображение списка;\r\n2 - Отобразить сотрудника;\r\n3 - Добавить сотрудника;\r\n4 - Удалить сотрудника;" +
