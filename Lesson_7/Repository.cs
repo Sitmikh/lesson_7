@@ -28,10 +28,11 @@ namespace Lesson_7
             return worker;
         }
 
-        public Worker GetWorkerById(int id) //можно объединить гетворкер и делит воркер (гетворкер+строка удалить)
+        public Worker GetWorkerById(int comcretId) //можно объединить гетворкер и делит воркер (гетворкер+строка удалить)
         {
             Console.WriteLine("Введите id для отображения необходимого  сотрудника");
-            return worker[id];
+            comcretId = int.Parse(Console.ReadLine());
+            return worker[comcretId];
         }
 
         public void AddWorker(Worker worker)
