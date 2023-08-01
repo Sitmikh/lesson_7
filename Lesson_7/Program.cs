@@ -29,15 +29,17 @@ namespace Lesson7
                 {
                     case "1": // Отображение списка
                         var workers = rep.GetAllWorkers();
-                        foreach (var worker in workers.Where(x => !string.IsNullOrWhiteSpace(x.FIO)))
+                        foreach (var worker1 in workers.Where(x => !string.IsNullOrWhiteSpace(x.FIO)))
                         {
-                            Console.WriteLine(worker.Print());
+                            Console.WriteLine(worker1.Print());
                         }
                         Console.WriteLine();
                         break;
 
                     case "2": // Отобразить сотрудника
-                        rep.GetWorkerById(int.Parse(Console.ReadLine()));
+                        Console.WriteLine("Введите id для отображения необходимого  сотрудника");
+                        var worker = rep.GetWorkerById(int.Parse(Console.ReadLine()));
+                        Console.WriteLine(worker?.Print());
                         break;
                     case "3": // Добавить сотрудника
                         //rep.AddWorker();

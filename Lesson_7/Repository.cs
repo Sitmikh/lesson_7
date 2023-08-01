@@ -32,7 +32,6 @@ namespace Lesson_7
 
         public Worker? GetWorkerById(int concretId) 
         {
-            Console.WriteLine("Введите id для отображения необходимого  сотрудника");
             if (concretId >= worker.Length || concretId < 0 )
             {
                 return null;
