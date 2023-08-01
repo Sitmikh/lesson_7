@@ -42,7 +42,7 @@ namespace Lesson7
                         Console.WriteLine(worker?.Print());
                         break;
                     case "3": // Добавить сотрудника
-                        //rep.AddWorker();
+                        rep.AddWorker(ReadWorker());
                         break;
                     case "4": // Удалить сотрудника
                         rep.DeleteWorker(int.Parse(Console.ReadLine()));
@@ -67,6 +67,26 @@ namespace Lesson7
             {
                 Console.WriteLine("\tВведите:\r\n1 - Отображение списка;\r\n2 - Отобразить сотрудника;\r\n3 - Добавить сотрудника;\r\n4 - Удалить сотрудника;" +
                     "\r\n5 - Отобразить сотрудникв в определенном диапазоне дат;\r\nF - Помощь;\r\n0 - Выход.");
+            }
+
+            Worker ReadWorker()
+            {
+                Console.WriteLine("Введите ФИО");
+                string FIO = Console.ReadLine();
+
+                Console.WriteLine("Введите возраст");
+                byte Age = byte.Parse(Console.ReadLine());
+
+                Console.WriteLine("Введите рост");
+                uint Height = uint.Parse(Console.ReadLine());
+
+                Console.WriteLine("Введите ФИО");
+                DateTime Burthday = DateTime.Parse(Console.ReadLine());
+
+                Console.WriteLine("Введите ФИО");
+                string PlaceOfBirth = Console.ReadLine();
+
+                return new Worker(FIO, Age, Height, Burthday, PlaceOfBirth);
             }
         }
     }

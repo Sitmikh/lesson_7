@@ -29,6 +29,17 @@ namespace Lesson_7
             this.Burthday = Burthday;
             this.PlaceOfBirth = PlaceOfBirth;
         }
+
+        public Worker(string FIO, byte Age, uint Height, DateTime Burthday, string PlaceOfBirth)
+        {
+            this.Id = default;
+            this.ImploymentDate = default;
+            this.FIO = FIO;
+            this.Age = Age;
+            this.Height = Height;
+            this.Burthday = Burthday;
+            this.PlaceOfBirth = PlaceOfBirth;
+        }
         /// <summary>
         /// Id работника
         /// </summary>

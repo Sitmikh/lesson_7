@@ -11,7 +11,7 @@ namespace Lesson_7
 {
     struct Repository
     {
-        private Worker[] worker;
+        private Worker[] workers;
         uint id;
         private string path;
         private string[] titles;
@@ -21,36 +21,40 @@ namespace Lesson_7
             this.path = path;
             this.id = 0; 
             this.titles = new string[5];
-            this.worker = new Worker[1];
+            this.workers = new Worker[1];
 
         }
         public Worker[] GetAllWorkers()
         {
             
-            return worker;
+            return workers;
         }
 
         public Worker? GetWorkerById(int concretId) 
         {
-            if (concretId >= worker.Length || concretId < 1 )
+            if (concretId >= workers.Length || concretId < 1 )
             {
                 return null;
             }
-            return worker[concretId - 1];
+            return workers[concretId - 1];
         }
 
         public void AddWorker(Worker worker)
         {
-            Resize(id >= this.worker.Length);
-            this.worker[id] = worker;
+            Resize(id >= this.workers.Length);
+            if (worker.Id == default)
+            {
+                worker.Id = id;
+                worker.ImploymentDate = DateTime.Now;
+            }
+            this.workers[id] = worker;
             id++; 
-
         }
 
         public void DeleteWorker(int id)
         {
             Console.WriteLine("Введите id для удаления необходимого  сотрудника");
-            Array.Clear(worker, id, 1);
+            Array.Clear(workers, id, 1);
         }
         public Worker[] GetWorkersBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
         {
@@ -64,8 +68,8 @@ namespace Lesson_7
         {
             using (StreamWriter sw = new StreamWriter(path)) //зачем this
             {
-                for (int i = 0; i < this.worker.Length; i++)
-                    sw.WriteLine(worker[i]);
+                for (int i = 0; i < this.workers.Length; i++)
+                    sw.WriteLine(workers[i]);
             }
         }
 
@@ -96,7 +100,7 @@ namespace Lesson_7
         { 
         if (Flag)
             {
-                Array.Resize(ref worker, this.worker.Length * 2);
+                Array.Resize(ref workers, this.workers.Length * 2);
             }    
         }
     }
