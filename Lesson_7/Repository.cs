@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,31 +16,35 @@ namespace Lesson_7
         private string path;
         private string[] titles;
 
-        public Repository(string path) //зачем инициализация
+        public Repository(string path) 
         { 
             this.path = path;
-            this.id = 0; //0 или 1
+            this.id = 1; //0 или 1
             this.titles = new string[5];
-            this.worker = new Worker[2];
+            this.worker = new Worker[1];
 
         }
         public Worker[] GetAllWorkers()
         {
+            
             return worker;
         }
 
-        public Worker GetWorkerById(int comcretId) //можно объединить гетворкер и делит воркер (гетворкер+строка удалить)
+        public Worker? GetWorkerById(int concretId) 
         {
             Console.WriteLine("Введите id для отображения необходимого  сотрудника");
-            comcretId = int.Parse(Console.ReadLine());
-            return worker[comcretId];
+            if (concretId >= worker.Length || concretId < 0 )
+            {
+                return null;
+            }
+            return worker[concretId];
         }
 
         public void AddWorker(Worker worker)
         {
-            this.Resize(id >= this.worker.Length);
+            Resize(id >= this.worker.Length);
             this.worker[id] = worker;
-            id++; //зачем this
+            id++; 
 
         }
 
@@ -71,11 +76,15 @@ namespace Lesson_7
     /// <param name="path">путь к файлу с сотрудниками</param>
         public void ReadFromFile()
         {
-            using (StreamReader sr = new StreamReader(path)) //зачем this
+            using (StreamReader sr = new StreamReader(path)) 
             {
-                //titles = sr.ReadLine().Split('#');
-                string line = sr.ReadToEnd();
-                worker = line.Split('#', '\r', '\n'); //непанятна
+                while (!sr.EndOfStream)
+                {
+                    //titles = sr.ReadLine().Split('#');
+                    string line = sr.ReadLine();
+                    var splatLine = line.Split('#', '\r', '\n');
+                    AddWorker(new Worker(splatLine[2], Convert.ToByte(splatLine[3]), Convert.ToUInt32(splatLine[4]), Convert.ToDateTime(splatLine[5]), splatLine[6]));
+                }
             }
         }
 

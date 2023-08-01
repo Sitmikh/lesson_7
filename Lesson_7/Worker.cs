@@ -51,7 +51,7 @@ namespace Lesson_7
      
         public string Print()
         {
-            return $"{this.FIO,15} {this.Age,15} {this.Height,15} {this.Burthday,15} {this.PlaceOfBirth,10}";
+            return $"{this.FIO,30} {this.Age,15} {this.Height,15} {this.Burthday,15} {this.PlaceOfBirth,10}";
         }
     }
 }

@@ -28,8 +28,14 @@ namespace Lesson7
                 switch (key)
                 {
                     case "1": // Отображение списка
-                        rep.GetAllWorkers();
+                        var workers = rep.GetAllWorkers();
+                        foreach (var worker in workers.Where(x => !string.IsNullOrWhiteSpace(x.FIO)))
+                        {
+                            Console.WriteLine(worker.Print());
+                        }
+                        Console.WriteLine();
                         break;
+
                     case "2": // Отобразить сотрудника
                         rep.GetWorkerById(int.Parse(Console.ReadLine()));
                         break;
