@@ -58,9 +58,9 @@ namespace Lesson_7
         }
         public Worker[] GetWorkersBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
         {
-            return new Worker[0];
+            return workers.Where(x => x.ImploymentDate >= dateFrom && x.ImploymentDate <= dateTo).ToArray();
         }
-        
+
         /// <summary>
         /// Сохранение информации о сотрудниках в файл
         /// </summary>

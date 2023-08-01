@@ -48,7 +48,14 @@ namespace Lesson7
                         rep.DeleteWorker(int.Parse(Console.ReadLine()));
                         break;
                     case "5": // Сотрудники в диапазоне дат
-                       // rep.GetWorkersBetweenTwoDates();
+                        DateTime dateFrom = DateTime.Parse(Console.ReadLine());
+                        DateTime dateTo = DateTime.Parse(Console.ReadLine());
+                        var workersbydates = rep.GetWorkersBetweenTwoDates(dateFrom, dateTo);
+                        foreach (var worker2 in workersbydates)
+                        {
+                            Console.WriteLine(worker2.Print());
+                        }
+                        Console.WriteLine();
                         break;
                     case "F":   // Помощь                                     
                     case "f":
