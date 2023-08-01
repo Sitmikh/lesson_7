@@ -19,7 +19,7 @@ namespace Lesson_7
         public Repository(string path) 
         { 
             this.path = path;
-            this.id = 1; //0 или 1
+            this.id = 0; 
             this.titles = new string[5];
             this.worker = new Worker[1];
 
@@ -32,11 +32,11 @@ namespace Lesson_7
 
         public Worker? GetWorkerById(int concretId) 
         {
-            if (concretId >= worker.Length || concretId < 0 )
+            if (concretId >= worker.Length || concretId < 1 )
             {
                 return null;
             }
-            return worker[concretId];
+            return worker[concretId - 1];
         }
 
         public void AddWorker(Worker worker)
@@ -82,7 +82,7 @@ namespace Lesson_7
                     //titles = sr.ReadLine().Split('#');
                     string line = sr.ReadLine();
                     var splatLine = line.Split('#', '\r', '\n');
-                    AddWorker(new Worker(splatLine[2], Convert.ToByte(splatLine[3]), Convert.ToUInt32(splatLine[4]), Convert.ToDateTime(splatLine[5]), splatLine[6]));
+                    AddWorker(new Worker(Convert.ToUInt32(splatLine[0]), Convert.ToDateTime(splatLine[1]), splatLine[2], Convert.ToByte(splatLine[3]), Convert.ToUInt32(splatLine[4]), Convert.ToDateTime(splatLine[5]), splatLine[6]));
                 }
             }
         }

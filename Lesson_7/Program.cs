@@ -55,8 +55,8 @@ namespace Lesson7
                         Help();
                         break;
                     case "0": // Выход
-                        System.Environment.Exit(0);
                         rep.WriteToFile();
+                        System.Environment.Exit(0);
                         break;
                 }
             }

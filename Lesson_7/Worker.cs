@@ -19,15 +19,26 @@ namespace Lesson_7
         /// <param name="Height">Рост работника</param>
         /// <param name="Burthday">Дата рождения работника</param>
         /// <param name="PlaceOfBirth">Место рождения работника</param>
-        public Worker(string FIO, byte Age, uint Height, DateTime Burthday, string PlaceOfBirth)
+        public Worker(uint Id, DateTime ImploymentDate, string FIO, byte Age, uint Height, DateTime Burthday, string PlaceOfBirth)
         {
+            this.Id = Id;
+            this.ImploymentDate = ImploymentDate;
             this.FIO = FIO;
             this.Age = Age;
             this.Height = Height;
             this.Burthday = Burthday;
             this.PlaceOfBirth = PlaceOfBirth;
         }
+        /// <summary>
+        /// Id работника
+        /// </summary>
+        public uint Id { get; set; }
         
+        /// <summary>
+        /// Дата и время заполнения работника
+        /// </summary>
+        public DateTime ImploymentDate { get; set; }
+       
         /// <summary>
         /// ФИО работника
         /// </summary>
@@ -51,7 +62,7 @@ namespace Lesson_7
      
         public string Print()
         {
-            return $"{this.FIO,30} {this.Age,15} {this.Height,15} {this.Burthday,15} {this.PlaceOfBirth,10}";
+            return $"{this.Id + 1 ,30} {this.ImploymentDate,30} {this.FIO,30} {this.Age,15} {this.Height,15} {this.Burthday,15} {this.PlaceOfBirth,10}";
         }
     }
 }
